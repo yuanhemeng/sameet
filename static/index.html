@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f7f5ef">
+  <title>同词相遇</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body class="home-page">
+  <main class="home-shell">
+    <section class="brand-block">
+      <div class="brand-mark" aria-hidden="true"><span>同</span><span>词</span></div>
+      <p class="eyebrow">双人联想游戏</p>
+      <h1>同词相遇</h1>
+      <p class="intro">从两个不同的词出发，在彼此的联想中靠近，直到想到同一个词。</p>
+      <div class="mini-demo" aria-label="玩法示例">
+        <div><span>苹果</span><span>香蕉</span></div>
+        <i></i>
+        <div><span>水果</span><span>水果</span></div>
+      </div>
+    </section>
+
+    <section class="entry-panel" aria-labelledby="entry-title">
+      <div class="segmented" role="tablist" aria-label="进入方式">
+        <button class="segment active" id="create-tab" type="button" role="tab" aria-selected="true">创建房间</button>
+        <button class="segment" id="join-tab" type="button" role="tab" aria-selected="false">加入房间</button>
+      </div>
+
+      <form id="create-form" class="entry-form">
+        <h2 id="entry-title">准备见面</h2>
+        <label>你的昵称<input id="create-name" maxlength="16" autocomplete="nickname" placeholder="例如：小林" required></label>
+        <fieldset>
+          <legend>每轮等待时间</legend>
+          <div class="time-options">
+            <label><input type="radio" name="time" value="30" checked><span>30 秒</span></label>
+            <label><input type="radio" name="time" value="60"><span>60 秒</span></label>
+            <label><input type="radio" name="time" value="custom"><span>自定义</span></label>
+          </div>
+          <label id="custom-time-wrap" class="custom-time hidden">秒数<input id="custom-time" type="number" min="10" max="300" value="90" inputmode="numeric"></label>
+        </fieldset>
+        <button class="primary-button" type="submit">创建房间</button>
+      </form>
+
+      <form id="join-form" class="entry-form hidden">
+        <h2>加入朋友</h2>
+        <label>你的昵称<input id="join-name" maxlength="16" autocomplete="nickname" placeholder="例如：阿青" required></label>
+        <label>六位房间码<input id="room-code" class="code-input" minlength="6" maxlength="6" autocomplete="off" placeholder="ABC123" required></label>
+        <button class="primary-button coral" type="submit">加入房间</button>
+      </form>
+      <p id="form-error" class="form-error" role="alert"></p>
+    </section>
+  </main>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>
+

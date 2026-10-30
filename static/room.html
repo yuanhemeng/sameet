@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f7f5ef">
+  <title>房间 · 同词相遇</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body class="room-page">
+  <header class="room-header">
+    <a href="/" class="wordmark">同词相遇</a>
+    <div class="connection"><span id="connection-dot"></span><span id="connection-text">连接中</span></div>
+  </header>
+
+  <main class="game-shell">
+    <section class="room-meta">
+      <div><span class="label">房间</span><strong id="room-code-display">------</strong></div>
+      <button id="copy-link" class="secondary-button" type="button">复制邀请链接</button>
+    </section>
+
+    <section class="players" aria-label="玩家">
+      <article class="player-slot" id="player-one"><span class="avatar">?</span><div><strong>等待加入</strong><small>离线</small></div><span class="ready-dot"></span></article>
+      <div class="meeting-line"><span></span><i>×</i><span></span></div>
+      <article class="player-slot" id="player-two"><span class="avatar">?</span><div><strong>等待加入</strong><small>尚未加入</small></div><span class="ready-dot"></span></article>
+    </section>
+
+    <section id="waiting-view" class="stage-view">
+      <p class="eyebrow">等待区</p>
+      <h1>邀请一位朋友</h1>
+      <p id="waiting-copy">把房间链接发给朋友，两人到齐后就可以开始。</p>
+      <button id="start-game" class="primary-button compact" type="button" disabled>开始游戏</button>
+    </section>
+
+    <section id="game-view" class="stage-view hidden">
+      <div class="round-heading"><span id="round-label">第 1 轮</span><strong id="timer">30</strong></div>
+      <div id="previous-pair" class="previous-pair hidden"></div>
+      <div class="prompt-block">
+        <p id="game-prompt">写下你此刻想到的词</p>
+        <form id="word-form" class="word-form">
+          <input id="word-input" maxlength="20" autocomplete="off" enterkeyhint="send" placeholder="输入一个词" required>
+          <button class="primary-button compact" type="submit">提交</button>
+        </form>
+        <p id="submission-note" class="submission-note"></p>
+      </div>
+    </section>
+
+    <section id="result-view" class="stage-view result-view hidden">
+      <p class="eyebrow">相遇成功</p>
+      <h1 id="winning-word">同一个词</h1>
+      <p id="result-summary"></p>
+      <button id="restart-game" class="primary-button compact" type="button">再来一局</button>
+    </section>
+
+    <section id="history-section" class="history-section hidden">
+      <div class="section-heading"><h2>词语轨迹</h2><span id="history-count"></span></div>
+      <ol id="history-list"></ol>
+    </section>
+  </main>
+
+  <dialog id="join-dialog">
+    <form id="dialog-join-form" method="dialog">
+      <p class="eyebrow">收到邀请</p>
+      <h2>加入这场相遇</h2>
+      <label>你的昵称<input id="dialog-name" maxlength="16" autocomplete="nickname" placeholder="输入昵称" required></label>
+      <button class="primary-button coral" type="submit">加入房间</button>
+      <a href="/" class="text-link">返回首页</a>
+      <p id="dialog-error" class="form-error" role="alert"></p>
+    </form>
+  </dialog>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="/static/room.js" defer></script>
+</body>
+</html>
+
